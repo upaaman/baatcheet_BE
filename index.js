@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
     credentials: true,
-    origin: process.env.CLIENT_URL,
+    origin: "https://baatcheet-five.vercel.app",
 }));
 
 async function getUserDataFromRequest(req) {
@@ -112,8 +112,9 @@ app.post('/register', async (req, res) => {
     }
 });
 
-const url=process.env.CLIENT_URL;
-const server = app.listen(url);
+const port = process.env.PORT || 4000;
+
+const server = app.listen(port, () => console.log("Server Started"));
 
 const wss = new ws.WebSocketServer({ server });
 wss.on('connection', (connection, req) => {
