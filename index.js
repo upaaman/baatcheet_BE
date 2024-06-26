@@ -112,7 +112,8 @@ app.post('/register', async (req, res) => {
     }
 });
 
-const server = app.listen(4040);
+const url=process.env.CLIENT_URL;
+const server = app.listen(url);
 
 const wss = new ws.WebSocketServer({ server });
 wss.on('connection', (connection, req) => {
